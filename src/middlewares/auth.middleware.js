@@ -17,7 +17,7 @@ const verifyJWT=asyncHandler(async(req,res,next)=>{//_ inplace of res as of no u
         if(!decodedToken){
             throw new ApiError(402,"Invalid accesstoken")
         }
-        const user=await User.findById(decodedToken._id).select("-passwrod -refreshToken")
+        const user=await User.findById(decodedToken._id).select("-password -refreshToken")
         req.user=user;
         next()//as middleware so next() is required over here to go tologoutUser function.
     }
