@@ -19,7 +19,7 @@ const verifyJWT=asyncHandler(async(req,res,next)=>{//_ inplace of res as of no u
         }
         const user=await User.findById(decodedToken._id).select("-password -refreshToken")
         req.user=user;
-        next()//as middleware so next() is required over here to go tologoutUser function.
+        next()//as middleware so next() is required over here to go to logoutUser function.
     }
      catch (error) {
         throw new ApiError( "Invalid access token" )
