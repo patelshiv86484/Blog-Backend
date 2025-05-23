@@ -103,7 +103,8 @@ const loginUser=asyncHandler(async(req,res)=>{
       const options={// for telling which one can access this cookie data.
           httpOnly:true,//Prevents access via JavaScript (document.cookie cannot read it).
           secure:true,// Ensures cookies are transmitted only over HTTPS(not http), enhancing security.
-          sameSite: "none",//Required for cross-site cookies (Vercel → Render)
+          //sameSite: "none",//Required for cross-site cookies (Vercel → Render)  comment out for deployin on render
+         sameSite: "lax", // or omit it — Lax is default
       }
       return res.
       status(202).
