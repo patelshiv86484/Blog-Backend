@@ -140,6 +140,7 @@ const logoutUser=asyncHandler(async(req,res)=>{
             const option={
                   httpOnly:true,
                   secure:true,
+                sameSite: "none",
             }
             res.status(201)
             .clearCookie("refreshtoken",option)//while clearing he cookie attributes (like httpOnly, secure, sameSite, path) exactly match those used when setting the cookie to ensure correct cookies are erased not other.
