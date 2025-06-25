@@ -24,6 +24,9 @@ app.use(cors((req, callback) => {
     }
     callback(null, corsOptions);
 }));
+app.get("/ping", (req, res) => {
+  res.status(200).send("pong");
+});
 
 app.use(express.json({limit:"16kb"}));//parse incoming request bodies as JSON(because When a client sends data to the server, even if it's in JSON format, the payload (the body of the HTTP request) is transmitted as a string.), but with a size limit on the body as 16kb.
 app.use(express.urlencoded({extended:true,limit:"16kb"}));//express.urlencoded() middleware will parse the incoming URL-encoded data, converting it into a JavaScript object that can be easily accessed using req.body.
